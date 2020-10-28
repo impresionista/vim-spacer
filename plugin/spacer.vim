@@ -16,7 +16,7 @@ endfunction
 function! s:GetCursorPos()
   let s:curr_pos  = col(".")
   let s:curr_line = line(".")
-  let s:title_pos = s:curr_pos+3
+  let s:title_pos = s:curr_pos+2
 endfunction
 
 function! s:GetLineLenght()
