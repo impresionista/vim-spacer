@@ -3,60 +3,61 @@
 " Version:  0.1
 
 " Standard variable values in case there ar not externally defined
-  let linelenght  = 80
-  let sep_char    = "-"
-  let comm_char   = "# "
-  let curr_pos    = col(".")
+  let s:linelenght  = 80
+  let s:sep_char    = "-"
+  let s:comm_char   = "# "
+  let s:curr_pos    = col(".")
 
 " Local functions
 function! s:GetCommentSymbol()
-  let com_char = split(&commentstring, '%s')[0]
+  let s:comm_char = split(&commentstring, '%s')[0]
 endfunction
 
 function! s:GetCursorPos()
-  let curr_pos  = col(".")
-  let curr_line = line(".")
-  let title_pos = curr_pos+3
+  global let s:curr_pos  = col(".")
+  let s:curr_line = line(".")
+  let s:title_pos = s:curr_pos+3
 endfunction
 
 function! s:GetLineLenght()
   " TO-DO:
   " Needs to read filetype standard line length.
-  let linelenght = 80
+  let s:linelenght = 80
 endfunction
 
 function! s:FullWidth()
   call s:GetLineLenght()
   call s:GetCursorPos()
-  if curr_pos == 1
-    let width = linelenght-(curr_pos+2)
+  if s:curr_pos == 1
+    let s:width = s:linelenght-(s:curr_pos+2)
   else
-    let width = linelenght-(curr_pos+3)
+    let s:width = s:linelenght-(s:curr_pos+3)
   endif
 endfunction
 
 function! s:SmallWidth()
   call s:GetLineLenght()
   call s:GetCursorPos()
-  if curr_pos == 1
-    let width = 3*linelenght/4-(curr_pos+2)
+  if s:curr_pos == 1
+    let s:width = 3*s:linelenght/4-(s:curr_pos+2)
   else
-    let width = 3*linelenght/4-(curr_pos+3)
+    let s:width = 3*s:linelenght/4-(s:curr_pos+3)
   endif
 endfunction
+
 
 
 " Seperators
 function! Separator()
   call s:GetCommentSymbol()
   call s:FullWidth()
-  exe ":normal a".comm_char.repeat(sep_char, width)."\<CR>"
+  exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)."\<CR>"
 endfunction
 
 function! SmallSeparator()
   call s:GetCommentSymbol()
   call s:SmallWidth()
-  exe ":normal a".comm_char.repeat(sep_char, width)."\<CR>"
+  exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)."\<CR>"
 endfunction
 
 
@@ -67,8 +68,8 @@ function! Title()
   call s:FullWidth()
   let current_mode = mode()
   if current_mode == 'n'
-    exe ":normal a".comm_char.repeat(sep_char, width)
-    call cursor(curr_line, tittle_pos)
+    exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)
+    call cursor(s:curr_line, s:title_pos)
     exe ":startreplace"
   elseif current_mode == 'v' | current_mode == 'V'
     " TO-DO:
@@ -82,8 +83,8 @@ function! SmallTitle()
   call s:SmallWidth()
   let current_mode = mode()
   if current_mode == 'n'
-    exe ":normal a".comm_char.repeat(sep_char, width)
-    call cursor(curr_line, tittle_pos)
+    exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)
+    call cursor(s:curr_line, s:title_pos)
     exe ":startreplace"
   elseif current_mode == 'v' | current_mode == 'V'
     " TO-DO:
