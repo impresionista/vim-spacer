@@ -51,7 +51,7 @@ endfunction
 function! Separator()
   call s:GetCommentSymbol()
   call s:FullWidth()
-  exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)."\<CR>"
+  exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)."/**<ESC>o"
 endfunction
 
 function! SmallSeparator()
