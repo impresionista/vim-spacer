@@ -51,13 +51,17 @@ endfunction
 function! Separator()
   call s:GetCommentSymbol()
   call s:FullWidth()
-  exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)."/**<ESC>o"
+  setlocal formatoptions-=cro
+  exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)."\<CR>"
+  setlocal formatoptions=qlj
 endfunction
 
 function! SmallSeparator()
   call s:GetCommentSymbol()
   call s:SmallWidth()
+  setlocal formatoptions-=cro
   exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)."\<CR>"
+  setlocal formatoptions=qlj
 endfunction
 
 
