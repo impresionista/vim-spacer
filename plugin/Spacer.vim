@@ -1,14 +1,21 @@
-" spacer.vim - Spacer!
+" -----------------------------------------------------------------------------
+" Spacer.vim - Spacer!
 " Author:   Marcos Ferradas
 " Version:  0.1
+" -----------------------------------------------------------------------------
 
+" -----------------------------------------------------------------------------
 " Standard variable values in case there ar not externally defined
+" -----------------------------------------------------------------------------
 let s:linelenght  = 80
 let s:sep_char    = "-"
 let s:comm_char   = "# "
 let s:curr_pos    = col(".")
 
+
+" -----------------------------------------------------------------------------
 " Local functions
+" -----------------------------------------------------------------------------
 function! s:GetCommentSymbol()
   let s:comm_char = split(&commentstring, '%s')[0]."\<space>"
 endfunction
@@ -46,7 +53,9 @@ function! s:SmallWidth()
 endfunction
 
 
+" -----------------------------------------------------------------------------
 " Seperators
+" -----------------------------------------------------------------------------
 function! Spacer#Separator()
   call s:GetCommentSymbol()
   call s:FullWidth()
@@ -64,7 +73,9 @@ function! Spacer#SmallSeparator()
 endfunction
 
 
-" Separators with title
+" -----------------------------------------------------------------------------
+" Titles
+" -----------------------------------------------------------------------------
 function! Spacer#Title()
   call s:GetCommentSymbol()
   call s:GetCursorPos()
@@ -96,12 +107,15 @@ function! Spacer#SmallTitle()
 endfunction
 
 
+" -----------------------------------------------------------------------------
 " Key mappings
+" -----------------------------------------------------------------------------
 " Insert mode remap
   inoremap <C-s> <C-o>:call Spacer#Separator()<CR>
   inoremap <A-s> <C-o>:call Spacer#SmallSeparator()<CR>
   inoremap <C-t> <C-o>:call Spacer#Title()<CR>
   inoremap <A-t> <C-o>:call Spacer#SmallTitle()<CR>
+
 " Normal mode remap
   nnoremap <leader>iS :call Spacer#Separator()<CR>
   nnoremap <leader>is :call Spacer#SmallSeparator()<CR>
