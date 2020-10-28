@@ -14,7 +14,7 @@ function! s:GetCommentSymbol()
 endfunction
 
 function! s:GetCursorPos()
-  global let s:curr_pos  = col(".")
+  let s:curr_pos  = col(".")
   let s:curr_line = line(".")
   let s:title_pos = s:curr_pos+3
 endfunction
@@ -28,7 +28,7 @@ endfunction
 function! s:FullWidth()
   call s:GetLineLenght()
   call s:GetCursorPos()
-
+  if s:curr_pos == 1
     let s:width = s:linelenght-(s:curr_pos+2)
   else
     let s:width = s:linelenght-(s:curr_pos+3)
