@@ -3,10 +3,10 @@
 " Version:  0.1
 
 " Standard variable values in case there ar not externally defined
-  let s:linelenght  = 80
-  let s:sep_char    = "-"
-  let s:comm_char   = "# "
-  let s:curr_pos    = col(".")
+let s:linelenght  = 80
+let s:sep_char    = "-"
+let s:comm_char   = "# "
+let s:curr_pos    = col(".")
 
 " Local functions
 function! s:GetCommentSymbol()
@@ -47,7 +47,7 @@ endfunction
 
 
 " Seperators
-function! Separator()
+function! Spacer#Separator()
   call s:GetCommentSymbol()
   call s:FullWidth()
   set formatoptions-=cro
@@ -55,7 +55,7 @@ function! Separator()
   set formatoptions=qlj
 endfunction
 
-function! SmallSeparator()
+function! Spacer#SmallSeparator()
   call s:GetCommentSymbol()
   call s:SmallWidth()
   set formatoptions-=cro
@@ -65,7 +65,7 @@ endfunction
 
 
 " Separators with title
-function! Title()
+function! Spacer#Title()
   call s:GetCommentSymbol()
   call s:GetCursorPos()
   call s:FullWidth()
@@ -80,7 +80,7 @@ function! Title()
   endif
 endfunction
 
-function! SmallTitle()
+function! Spacer#SmallTitle()
   call s:GetCommentSymbol()
   call s:GetCursorPos()
   call s:SmallWidth()
@@ -98,12 +98,12 @@ endfunction
 
 " Key mappings
 " Insert mode remap
-  inoremap <C-s> <C-o>:call Separator()<CR>
-  inoremap <A-s> <C-o>:call SmallSeparator()<CR>
-  inoremap <C-t> <C-o>:call Title()<CR>
-  inoremap <A-t> <C-o>:call SmallTitle()<CR>
+  inoremap <C-s> <C-o>:call Spacer#Separator()<CR>
+  inoremap <A-s> <C-o>:call Spacer#SmallSeparator()<CR>
+  inoremap <C-t> <C-o>:call Spacer#Title()<CR>
+  inoremap <A-t> <C-o>:call Spacer#SmallTitle()<CR>
 " Normal mode remap
-  nnoremap <leader>iS :call Separator()<CR>
-  nnoremap <leader>is :call SmallSeparator()<CR>
-  nnoremap <leader>iT :call Title()<CR>
-  nnoremap <leader>it :call SmallTitle()<CR>
+  nnoremap <leader>iS :call Spacer#Separator()<CR>
+  nnoremap <leader>is :call Spacer#SmallSeparator()<CR>
+  nnoremap <leader>iT :call Spacer#Title()<CR>
+  nnoremap <leader>it :call Spacer#SmallTitle()<CR>
