@@ -48,13 +48,13 @@ endfunction
 
 
 " Seperators
-function! s:Separator()
+function! Separator()
   call s:GetCommentSymbol()
   call s:FullWidth()
   exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)."\<CR>"
 endfunction
 
-function! s:SmallSeparator()
+function! SmallSeparator()
   call s:GetCommentSymbol()
   call s:SmallWidth()
   exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)."\<CR>"
@@ -62,7 +62,7 @@ endfunction
 
 
 " Separators with title
-function! s:Title()
+function! Title()
   call s:GetCommentSymbol()
   call s:GetCursorPos()
   call s:FullWidth()
@@ -77,7 +77,7 @@ function! s:Title()
   endif
 endfunction
 
-function! s:SmallTitle()
+function! SmallTitle()
   call s:GetCommentSymbol()
   call s:GetCursorPos()
   call s:SmallWidth()
@@ -95,12 +95,12 @@ endfunction
 
 " Key mappings
 " Insert mode remap
-  inoremap <C-s> <C-o>:call s:Separator()<CR>
-  inoremap <A-s> <C-o>:call s:SmallSeparator()<CR>
-  inoremap <C-t> <C-o>:call s:Title()<CR>
-  inoremap <A-t> <C-o>:call s:SmallTitle()<CR>
+  inoremap <C-s> <C-o>:call Separator()<CR>
+  inoremap <A-s> <C-o>:call SmallSeparator()<CR>
+  inoremap <C-t> <C-o>:call Title()<CR>
+  inoremap <A-t> <C-o>:call SmallTitle()<CR>
 " Normal mode remap
-  nnoremap <leader>iS :call s:Separator()<CR>
-  nnoremap <leader>is :call s:SmallSeparator()<CR>
-  nnoremap <leader>iT :call s:Title()<CR>
-  nnoremap <leader>it :call s:SmallTitle()<CR>
+  nnoremap <leader>iS :call Separator()<CR>
+  nnoremap <leader>is :call SmallSeparator()<CR>
+  nnoremap <leader>iT :call Title()<CR>
+  nnoremap <leader>it :call SmallTitle()<CR>
