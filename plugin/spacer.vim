@@ -10,7 +10,7 @@
 
 " Local functions
 function! s:GetCommentSymbol()
-  let s:comm_char = split(&commentstring, '%s')[0]
+  let s:comm_char = split(&commentstring, '%s')[0]."\<space>"
 endfunction
 
 function! s:GetCursorPos()
@@ -28,7 +28,7 @@ endfunction
 function! s:FullWidth()
   call s:GetLineLenght()
   call s:GetCursorPos()
-  if s:curr_pos == 1
+
     let s:width = s:linelenght-(s:curr_pos+2)
   else
     let s:width = s:linelenght-(s:curr_pos+3)
@@ -48,13 +48,13 @@ endfunction
 
 
 " Seperators
-function! Separator()
+function! s:Separator()
   call s:GetCommentSymbol()
   call s:FullWidth()
   exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)."\<CR>"
 endfunction
 
-function! SmallSeparator()
+function! s:SmallSeparator()
   call s:GetCommentSymbol()
   call s:SmallWidth()
   exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)."\<CR>"
@@ -62,7 +62,7 @@ endfunction
 
 
 " Separators with title
-function! Title()
+function! s:Title()
   call s:GetCommentSymbol()
   call s:GetCursorPos()
   call s:FullWidth()
@@ -77,7 +77,7 @@ function! Title()
   endif
 endfunction
 
-function! SmallTitle()
+function! s:SmallTitle()
   call s:GetCommentSymbol()
   call s:GetCursorPos()
   call s:SmallWidth()
@@ -95,12 +95,12 @@ endfunction
 
 " Key mappings
 " Insert mode remap
-  inoremap <C-s> <C-o>:call Separator()<CR>
-  inoremap <A-s> <C-o>:call SmallSeparator()<CR>
-  inoremap <C-t> <C-o>:call Title()<CR>
-  inoremap <A-t> <C-o>:call SmallTitle()<CR>
+  inoremap <C-s> <C-o>:call s:Separator()<CR>
+  inoremap <A-s> <C-o>:call s:SmallSeparator()<CR>
+  inoremap <C-t> <C-o>:call s:Title()<CR>
+  inoremap <A-t> <C-o>:call s:SmallTitle()<CR>
 " Normal mode remap
-  nnoremap <leader>iS :call Separator()<CR>
-  nnoremap <leader>is :call SmallSeparator()<CR>
-  nnoremap <leader>iT :call Title()<CR>
-  nnoremap <leader>it :call SmallTitle()<CR>
+  nnoremap <leader>iS :call s:Separator()<CR>
+  nnoremap <leader>is :call s:SmallSeparator()<CR>
+  nnoremap <leader>iT :call s:Title()<CR>
+  nnoremap <leader>it :call s:SmallTitle()<CR>
