@@ -44,12 +44,12 @@ sep_char='-'
 ### In Insert mode
 
 **Spacers:**
-- `<CTL>s` adds a spacer as long as your default line length.
-- `<ALT>s` adds a spacer as long as 3/4 of your default line length.
+- `<CTRL>s` adds a spacer as long as your default line length.
+- `<ALT>s`  adds a spacer as long as 3/4 of your default line length.
 
 **Titles:**
-- `<CTL>t` adds a spacer with title as long as your default line length.
-- `<ALT>t` adds a spacer with title as long as 3/4 of your default line length.
+- `<CTRL>t` adds a spacer with title as long as your default line length.
+- `<ALT>t`  adds a spacer with title as long as 3/4 of your default line length.
 
 
 ## Example
