@@ -30,7 +30,7 @@ comm_char='# '
 sep_char='-'
 ```
 
-## In visual mode
+### In Visual mode
 
 **Spacers:**
 - `<LEADER>iS` adds a spacer as long as your default line length.
@@ -41,7 +41,7 @@ sep_char='-'
 - `<LEADER>it` adds a spacer with title as long as 3/4 of your default line length.
 
 
-## In insert mode
+### In Insert mode
 
 **Spacers:**
 - `<CTL>s` adds a spacer as long as your default line length.
