@@ -86,10 +86,16 @@ function! Spacer#Title()
     call cursor(s:curr_line, s:title_pos)
     exe ":startreplace"
   elseif current_mode == 'v' | current_mode == 'V'
-    " TO-DO:
-    " Convert selected text to title
+    exe "\"sd"
+    exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)
+    call cursor(s:curr_line, s:title_pos)
+    let tlenght = strlen(@s)
+    exe "normal ".tlenght."x\"sP"."l"."r "
+    exe current_mode
   endif
 endfunction
+
+
 
 function! Spacer#SmallTitle()
   call s:GetCommentSymbol()
@@ -101,8 +107,12 @@ function! Spacer#SmallTitle()
     call cursor(s:curr_line, s:title_pos)
     exe ":startreplace"
   elseif current_mode == 'v' | current_mode == 'V'
-    " TO-DO:
-    " Convert selected text to title
+    exe "\"sd"
+    exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)
+    call cursor(s:curr_line, s:title_pos)
+    let tlenght = strlen(@s)
+    exe "normal ".tlenght."x\"sP"."l"."r "
+    exe current_mode
   endif
 endfunction
 
