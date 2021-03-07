@@ -1,7 +1,8 @@
 " -----------------------------------------------------------------------------
 " Spacer.vim - Spacer!
-" Author:   Marcos Ferradas
 " Version:  0.1
+" Author:   Marcos Ferradas <marcosferradas@gmail.com>
+"           https://gitlab.com/impresionista/vim-spacer
 " -----------------------------------------------------------------------------
 
 " -----------------------------------------------------------------------------
