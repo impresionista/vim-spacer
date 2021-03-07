@@ -131,7 +131,7 @@ endfunction
   nnoremap <leader>it :call Spacer#SmallTitle()<CR>
 
 " Visual/Select mode remap
-  vnoremap <leader>iS :call Spacer#Separator()<CR>
-  vnoremap <leader>is :call Spacer#SmallSeparator()<CR>
-  vnoremap <leader>iT :call Spacer#Title()<CR>
-  vnoremap <leader>it :call Spacer#SmallTitle()<CR>
+  vnoremap iS :call Spacer#Separator()<CR>
+  vnoremap is :call Spacer#SmallSeparator()<CR>
+  vnoremap iT :call Spacer#Title()<CR>
+  vnoremap it :call Spacer#SmallTitle()<CR>
