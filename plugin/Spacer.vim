@@ -86,12 +86,12 @@ function! Spacer#Title()
     call cursor(s:curr_line, s:title_pos)
     exe ":startreplace"
   elseif current_mode == 'v' | current_mode == 'V'
-    exe "\"sd"
-    exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)
-    call cursor(s:curr_line, s:title_pos)
-    let tlenght = strlen(@s)
-    exe "normal ".tlenght."x\"sP"."l"."r "
-    exe current_mode
+    " exe "\"sd"
+    " exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)
+    " call cursor(s:curr_line, s:title_pos)
+    " let tlenght = strlen(@s)
+    " exe "normal ".tlenght."x\"sP"."l"."r "
+    " exe current_mode
   endif
 endfunction
 
@@ -105,12 +105,12 @@ function! Spacer#SmallTitle()
     call cursor(s:curr_line, s:title_pos)
     exe ":startreplace"
   elseif current_mode == 'v' | current_mode == 'V'
-    exe "\"sd"
-    exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)
-    call cursor(s:curr_line, s:title_pos)
-    let tlenght = strlen(@s)
-    exe "normal ".tlenght."x\"sP"."l"."r "
-    exe current_mode
+    " exe "\"sd"
+    " exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)
+    " call cursor(s:curr_line, s:title_pos)
+    " let tlenght = strlen(@s)
+    " exe "normal ".tlenght."x\"sP"."l"."r "
+    " exe current_mode
   endif
 endfunction
 
@@ -125,12 +125,6 @@ endfunction
   inoremap <A-t> <C-o>:call Spacer#SmallTitle()<CR>
 
 " Normal mode remap
-  nnoremap <leader>iS :call Spacer#Separator()<CR>
-  nnoremap <leader>is :call Spacer#SmallSeparator()<CR>
-  nnoremap <leader>iT :call Spacer#Title()<CR>
-  nnoremap <leader>it :call Spacer#SmallTitle()<CR>
-
-" Visual/Select mode remap
   nnoremap <leader>iS :call Spacer#Separator()<CR>
   nnoremap <leader>is :call Spacer#SmallSeparator()<CR>
   nnoremap <leader>iT :call Spacer#Title()<CR>
