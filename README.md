@@ -51,6 +51,9 @@ sep_char='-'
 - `<CTRL>t` adds a spacer with title as long as your default line length.
 - `<ALT>t`  adds a spacer with title as long as 3/4 of your default line length.
 
+### In Visual mode
+- `<LEADER>iT` adds a spacer with selection as title as long as your default line length.
+- `<LEADER>it` adds a spacer with selection as title as long as 3/4 of your default line length.
 
 ## Example
 
@@ -75,7 +78,7 @@ This is a short spacer:
 
 # TO-DO
 
-- [  ] Add Visual mode to use selected text as title.
-- [  ] Add a "Big Title"
-- [  ] Add a "Big Spacer"
-- [  ] Add config parameters to define outside plugin file.
+- [x] Add Visual mode to use selected text as title.
+- [ ] Add a "Big Title"
+- [ ] Add a "Big Spacer"
+- [ ] Add config parameters to define outside plugin file.
