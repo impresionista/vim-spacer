@@ -11,7 +11,7 @@ Vim plugin to add separators and titles into your code.
 To add this pluggin add this line to your `.vimrc`:
 
 ```vim
-Plug  'git@gitlab.com:impresionista/vim-spacer.git'
+Plug  'https://gitlab.com/impresionista/vim-spacer.git'
 ```
 
 # Documentation
