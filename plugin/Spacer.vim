@@ -95,8 +95,6 @@ function! Spacer#Title()
   endif
 endfunction
 
-
-
 function! Spacer#SmallTitle()
   call s:GetCommentSymbol()
   call s:GetCursorPos()
@@ -127,6 +125,12 @@ endfunction
   inoremap <A-t> <C-o>:call Spacer#SmallTitle()<CR>
 
 " Normal mode remap
+  nnoremap <leader>iS :call Spacer#Separator()<CR>
+  nnoremap <leader>is :call Spacer#SmallSeparator()<CR>
+  nnoremap <leader>iT :call Spacer#Title()<CR>
+  nnoremap <leader>it :call Spacer#SmallTitle()<CR>
+
+" Visual/Select mode remap
   nnoremap <leader>iS :call Spacer#Separator()<CR>
   nnoremap <leader>is :call Spacer#SmallSeparator()<CR>
   nnoremap <leader>iT :call Spacer#Title()<CR>
