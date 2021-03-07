@@ -11,7 +11,7 @@
 let s:linelength  = 80
 let s:sep_char    = "-"
 let s:comm_char   = "# "
-let s:curr_pos    = col(".")
+" let s:curr_pos    = col(".")
 
 
 " -----------------------------------------------------------------------------
@@ -24,8 +24,12 @@ endfunction
 function! s:GetCursorPos(posindex)
   let s:curr_pos  = col(a:posindex)
   let s:curr_line = line(a:posindex)
-  let s:title_pos = s:curr_pos+2
-  echo s:curr_line s:curr_pos
+  if s:curr_pos == 1
+    let s:title_pos = s:curr_pos+2
+  else
+    let s:title_pos = s:curr_pos+3
+  endif
+  echo s:curr_line s:curr_pos s:title_pos
 endfunction
 
 function! s:GetLineLength()
@@ -78,49 +82,43 @@ endfunction
 " -----------------------------------------------------------------------------
 " Titles
 " -----------------------------------------------------------------------------
-function! Spacer#Title() range
-  let current_mode = mode()
+function! Spacer#Title()
   call s:GetCommentSymbol()
-  if current_mode == 'n'
-    echo current_mode
-    call s:GetCursorPos(".")
-    call s:FullWidth(".")
-    exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)
-    exe cursor(s:curr_line, s:title_pos)
-    exe ":startreplace"
-  elseif current_mode == 'v' | current_mode == 'V'
-    " echo current_mode
-    " call s:GetCursorPos("'<")
-    " call s:FullWidth("'<")
-    " exe "\"sd"
-    " let tlength = strlen(@s)
-    " exe ":normal a".s:comm_char.repeat(s:sep_char, s:width).cursor(s:curr_line, s:title_pos).tlength."x\"sP"."l"."r "
-    " exe current_mode
-  endif
+  echo l:current_mode
+  call s:GetCursorPos(".")
+  call s:FullWidth(".")
+  exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)
+  call cursor(s:curr_line, s:title_pos)
+  startreplace
 endfunction
 
-function! Spacer#SmallTitle() range
-  let current_mode = mode()
+function! Spacer#SmallTitle()
   call s:GetCommentSymbol()
-  if current_mode == 'n'
-    echo current_mode
-    call s:GetCursorPos(".")
-    call s:SmallWidth(".")
-    exe ":normal a".s:comm_char.repeat(s:sep_char, s:width).cursor(s:curr_line, s:title_pos)
-    exe ":startreplace"
-  elseif current_mode == 'v' | current_mode == 'V'
-    " echo current_mode
-    " call s:GetCursorPos("'<")
-    " call s:SmallWidth("'<")
-    " exe "\"sd"
-    " let tlength = strlen(@s)
-    " exe ":normal a".s:comm_char.repeat(s:sep_char, s:width).cursor(s:curr_line, s:title_pos).tlength."x\"sP"."l"."r "
-    " exe current_mode
-  endif
+  call s:GetCursorPos(".")
+  call s:SmallWidth(".")
+  exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)
+  call cursor(s:curr_line, s:title_pos)
+  startreplace
 endfunction
 
+function! Spacer#TitleSelectionFn() range
+  call s:GetCommentSymbol()
+  call s:GetCursorPos("v")
+  call s:FullWidth("v")
+  exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)
+  call cursor(s:curr_line, s:title_pos)
+  exe ":normal ".strlen(@s)."x\"sP"."l"."r "."j"
+endfunction
 
-" Titulo Piola
+function! Spacer#SmallTitleSelectionFn() range
+  call s:GetCommentSymbol()
+  call s:GetCursorPos("v")
+  call s:SmallWidth("v")
+  exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)
+  call cursor(s:curr_line, s:title_pos)
+  exe ":normal ".strlen(@s)."x\"sP"."l"."r "."j"
+endfunction
+
 
 " -----------------------------------------------------------------------------
 " Key mappings
@@ -138,7 +136,5 @@ endfunction
   nnoremap <leader>it :call Spacer#SmallTitle()<CR>
 
 " Visual/Select mode remap
-  vnoremap <leader>iS :call Spacer#Separator()<CR>
-  vnoremap <leader>is :call Spacer#SmallSeparator()<CR>
-  vnoremap <leader>iT :call Spacer#Title()<CR>
-  vnoremap <leader>it :call Spacer#SmallTitle()<CR>
+  vnoremap <leader>iT "sd:call Spacer#TitleSelection()<CR>
+  vnoremap <leader>it "sd:call Spacer#SmallTitleSelection()<CR>
