@@ -101,7 +101,7 @@ function! Spacer#SmallTitle()
   startreplace
 endfunction
 
-function! Spacer#TitleSelectionFn() range
+function! Spacer#TitleSelection() range
   call s:GetCommentSymbol()
   call s:GetCursorPos("v")
   call s:FullWidth("v")
@@ -110,7 +110,7 @@ function! Spacer#TitleSelectionFn() range
   exe ":normal ".strlen(@s)."x\"sP"."l"."r "."j"
 endfunction
 
-function! Spacer#SmallTitleSelectionFn() range
+function! Spacer#SmallTitleSelection() range
   call s:GetCommentSymbol()
   call s:GetCursorPos("v")
   call s:SmallWidth("v")
