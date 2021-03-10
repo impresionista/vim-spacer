@@ -29,7 +29,6 @@ function! s:GetCursorPos(posindex)
   else
     let s:title_pos = s:curr_pos+3
   endif
-  echo s:curr_line s:curr_pos s:title_pos
 endfunction
 
 function! s:GetLineLength()
@@ -84,7 +83,6 @@ endfunction
 " -----------------------------------------------------------------------------
 function! Spacer#Title()
   call s:GetCommentSymbol()
-  echo l:current_mode
   call s:GetCursorPos(".")
   call s:FullWidth(".")
   exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)
