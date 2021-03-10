@@ -10,7 +10,7 @@
 " -----------------------------------------------------------------------------
 let s:linelength  = 80
 let s:sep_char    = "-"
-let s:comm_char   = "# "
+let s:comm_char   = "#"
 " let s:curr_pos    = col(".")
 
 
