@@ -62,19 +62,24 @@ endfunction
 " Seperators
 " -----------------------------------------------------------------------------
 function! Spacer#Separator()
+  set nosmartindent
   call s:GetCommentSymbol()
   call s:FullWidth(".")
   set formatoptions-=cro
   exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)."\<CR>"
   set formatoptions=qlj
+  set smartindent
 endfunction
 
 function! Spacer#SmallSeparator()
+  set nosmartindent
+  call s:GetCommentSymbol()
   call s:GetCommentSymbol()
   call s:SmallWidth(".")
   set formatoptions-=cro
   exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)."\<CR>"
   set formatoptions=qlj
+  set smartindent
 endfunction
 
 
@@ -82,39 +87,51 @@ endfunction
 " Titles
 " -----------------------------------------------------------------------------
 function! Spacer#Title()
+  set nosmartindent
+  call s:GetCommentSymbol()
   call s:GetCommentSymbol()
   call s:GetCursorPos(".")
   call s:FullWidth(".")
   exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)
   call cursor(s:curr_line, s:title_pos)
   startreplace
+  set smartindent
 endfunction
 
 function! Spacer#SmallTitle()
+  set nosmartindent
+  call s:GetCommentSymbol()
   call s:GetCommentSymbol()
   call s:GetCursorPos(".")
   call s:SmallWidth(".")
   exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)
   call cursor(s:curr_line, s:title_pos)
   startreplace
+  set smartindent
 endfunction
 
 function! Spacer#TitleSelection() range
+  set nosmartindent
+  call s:GetCommentSymbol()
   call s:GetCommentSymbol()
   call s:GetCursorPos("v")
   call s:FullWidth("v")
   exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)
   call cursor(s:curr_line, s:title_pos)
   exe ":normal ".strlen(@s)."x\"sP"."l"."r "."j"
+  set smartindent
 endfunction
 
 function! Spacer#SmallTitleSelection() range
+  set nosmartindent
+  call s:GetCommentSymbol()
   call s:GetCommentSymbol()
   call s:GetCursorPos("v")
   call s:SmallWidth("v")
   exe ":normal a".s:comm_char.repeat(s:sep_char, s:width)
   call cursor(s:curr_line, s:title_pos)
   exe ":normal ".strlen(@s)."x\"sP"."l"."r "."j"
+  set smartindent
 endfunction
 
 
